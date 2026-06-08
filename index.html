@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avtostar - Автомагазин в Нижневартовске</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="header">
+    <div class="header-container">
+        <div class="logo">
+            <div class="logo-icon">⭐</div>
+            <div>
+                <h1>Avtostar</h1>
+            </div>
+        </div>
+        <nav class="nav">
+            <a href="#" class="active" id="nav-home">Главная</a>
+            <a href="#" id="nav-catalog">Каталог</a>
+            <a href="#" id="nav-reviews">Отзывы</a>
+            <a href="#" id="nav-contacts">Контакты</a>
+        </nav>
+        <div class="cart-icon" id="cart-icon-btn">
+            🛒 Корзина
+            <span id="cart-count">0</span>
+        </div>
+    </div>
+</div>
+
+<!-- ГЛАВНАЯ СТРАНИЦА -->
+<div id="home-page">
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Добро пожаловать в Avtostar!</h1>
+            <p>Качественные автотовары по доступным ценам в Нижневартовске</p>
+            <p class="hero-slogan">Дворники, компрессоры, автохимия, аксессуары и многое другое</p>
+            <button class="btn-primary" id="catalog-btn">Перейти в каталог</button>
+        </div>
+    </section>
+
+    <section class="advantages">
+        <div class="container">
+            <h2>Почему выбирают Avtostar?</h2>
+            <div class="advantages-grid">
+                <div class="advantage-card">
+                    <div class="advantage-icon">🚚</div>
+                    <h3>Быстрая доставка</h3>
+                    <p>Доставка по Нижневартовску за 1-2 дня</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">💎</div>
+                    <h3>Оригинальное качество</h3>
+                    <p>Только проверенные бренды</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">🔧</div>
+                    <h3>Широкий ассортимент</h3>
+                    <p>Более 1000 товаров в наличии</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">⭐</div>
+                    <h3>Отзывы клиентов</h3>
+                    <p>4.9 ★ на основе 500+ отзывов</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- СТРАНИЦА КАТАЛОГА -->
+<div id="catalog-page" style="display: none;">
+    <section class="catalog-section">
+        <div class="container">
+            <h2>Наш каталог</h2>
+            <div class="catalog-filters" id="catalog-filters">
+                <button class="filter-btn active" data-filter="all">Все товары</button>
+                <button class="filter-btn" data-filter="дворники">Дворники</button>
+                <button class="filter-btn" data-filter="компрессоры">Компрессоры</button>
+                <button class="filter-btn" data-filter="аксессуары">Аксессуары</button>
+                <button class="filter-btn" data-filter="автохимия">Автохимия</button>
+                <button class="filter-btn" data-filter="пахучки">Ароматизаторы</button>
+            </div>
+            <div class="catalog-grid" id="catalog"></div>
+        </div>
+    </section>
+</div>
+
+<!-- СТРАНИЦА ОТЗЫВОВ -->
+<div id="reviews-page" style="display: none;">
+    <section class="hero" style="min-height: 300px; margin-top: 70px;">
+        <div class="hero-content">
+            <h1>Отзывы наших клиентов</h1>
+            <p>Мы ценим ваше мнение!</p>
+        </div>
+    </section>
+    <section class="catalog-section">
+        <div class="container">
+            <div class="advantages-grid" style="margin-bottom: 50px;">
+                <div class="advantage-card">
+                    <div class="stats-number" style="font-size: 3rem; color: var(--primary); font-weight: bold;">4.9</div>
+                    <div class="stars" style="font-size: 1.5rem; color: gold;">★★★★★</div>
+                    <p>Средняя оценка</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="stats-number" style="font-size: 3rem; color: var(--primary); font-weight: bold;">500+</div>
+                    <p>Довольных клиентов</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="stats-number" style="font-size: 3rem; color: var(--primary); font-weight: bold;">98%</div>
+                    <p>Рекомендуют нас</p>
+                </div>
+            </div>
+
+            <div style="background: white; padding: 30px; border-radius: 15px; margin-bottom: 40px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                <h3 style="margin-bottom: 20px; color: var(--secondary);">Оставить отзыв</h3>
+                <form id="review-form">
+                    <div style="margin-bottom: 20px;">
+                        <input type="text" id="review-name" placeholder="Ваше имя" required style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 10px; font-size: 1rem;">
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <select id="review-rating" required style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 10px; font-size: 1rem;">
+                            <option value="">Оценка</option>
+                            <option value="5">★★★★★ (5)</option>
+                            <option value="4">★★★★☆ (4)</option>
+                            <option value="3">★★★☆☆ (3)</option>
+                            <option value="2">★★☆☆☆ (2)</option>
+                            <option value="1">★☆☆☆☆ (1)</option>
+                        </select>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <textarea id="review-text" rows="4" placeholder="Ваш отзыв..." required style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 10px; font-size: 1rem;"></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">Отправить отзыв</button>
+                </form>
+            </div>
+
+            <div>
+                <h3 style="margin-bottom: 20px; color: var(--secondary);">Последние отзывы</h3>
+                <div id="reviews-container"></div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- СТРАНИЦА КОНТАКТОВ -->
+<div id="contacts-page" style="display: none;">
+    <section class="contacts-section" style="margin-top: 70px;">
+        <div class="container">
+            <h2>Как нас найти</h2>
+            <div class="contacts-grid">
+                <div class="contacts-info">
+                    <div class="contact-item">
+                        <span class="contact-icon">📍</span>
+                        <div>
+                            <h3>Адрес:</h3>
+                            <p>г. Нижневартовск, Индустриальная ул., 29, стр. 11<br>(ряд, этаж 1, отдел 301, 2)</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">📞</span>
+                        <div>
+                            <h3>Телефон:</h3>
+                            <p>+7 (3466) 123-456</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">✉️</span>
+                        <div>
+                            <h3>Email:</h3>
+                            <p>info@avtostar86.ru</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">⏰</span>
+                        <div>
+                            <h3>Режим работы:</h3>
+                            <p>Пн-Пт: 9:00 - 20:00<br>Сб-Вс: 10:00 - 18:00</p>
+                        </div>
+                    </div>
+                </div>
+                    <div class="map-container">
+                        <iframe 
+                            src="https://yandex.ru/map-widget/v1/?ll=76.523571,60.934074&z=18&pt=76.523571,60.934074&l=map"
+                            width="100%" 
+                            height="100%" 
+                            frameborder="0"
+                            allowfullscreen="true"
+                            style="border:0;">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- КОРЗИНА -->
+<div class="cart-overlay" id="cart-overlay"></div>
+<div class="cart-sidebar" id="cart-sidebar">
+    <div class="cart-header">
+        <h2>🛍️ Корзина</h2>
+        <button class="close-cart" id="close-cart">&times;</button>
+    </div>
+    <div id="cart-items-list" class="cart-items">Корзина пуста</div>
+    <div class="cart-footer">
+        <div class="total">Итого: <span id="cart-total">0</span> ₽</div>
+        <button id="clear-cart-btn" class="btn-secondary">Очистить</button>
+        <button id="checkout-btn" class="btn-primary">Оформить заказ</button>
+    </div>
+</div>
+
+<!-- ПОДВАЛ -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>Avtostar</h3>
+                <p>Ваш надежный магазин автотоваров в Нижневартовске</p>
+            </div>
+            <div class="footer-col">
+                <h3>Категории</h3>
+                <ul>
+                    <li><a href="#" class="cat-link" data-cat="дворники">Дворники</a></li>
+                    <li><a href="#" class="cat-link" data-cat="компрессоры">Компрессоры</a></li>
+                    <li><a href="#" class="cat-link" data-cat="автохимия">Автохимия</a></li>
+                    <li><a href="#" class="cat-link" data-cat="аксессуары">Аксессуары</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Информация</h3>
+                <ul>
+                    <li><a href="#" id="footer-home">О компании</a></li>
+                    <li><a href="#" id="footer-reviews">Отзывы</a></li>
+                    <li><a href="#" id="footer-contacts">Контакты</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Мы в соцсетях</h3>
+                <div class="social-links">
+                    <a href="#">📘</a>
+                    <a href="#">📸</a>
+                    <a href="#">🎬</a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2026 Avtostar. Все права защищены.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

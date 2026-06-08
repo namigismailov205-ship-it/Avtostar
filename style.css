@@ -8,45 +8,58 @@
     --primary: #e63946;
     --primary-dark: #c1121f;
     --secondary: #1d3557;
+    --secondary-light: #2a4a6e;
     --accent: #f4a261;
     --light: #f8f9fa;
     --dark: #2b2d42;
     --gray: #6c757d;
+    --gray-light: #e9ecef;
     --success: #2a9d8f;
+    --shadow: 0 5px 20px rgba(0,0,0,0.08);
+    --shadow-hover: 0 10px 30px rgba(0,0,0,0.12);
 }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: var(--light);
+    background: #f5f7fa;
     color: var(--dark);
     overflow-x: hidden;
 }
 
+/* ФИКС ПЕРЕКРЫТИЯ ШАПКОЙ */
+html {
+    scroll-padding-top: 80px;
+    scroll-behavior: smooth;
+}
+
+section[id] {
+    scroll-margin-top: 80px;
+}
+
 .container {
-    max-width: 1300px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-/* ШАПКА */
+/* ========== ШАПКА ========== */
 .header {
-    background: linear-gradient(135deg, var(--secondary), #0f2b3d);
-    color: white;
+    background: white;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    box-shadow: var(--shadow);
 }
 
 .header-container {
-    max-width: 1300px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 1rem 20px;
+    padding: 0 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
+    height: 70px;
 }
 
 .logo {
@@ -56,53 +69,53 @@ body {
 }
 
 .logo-icon {
-    font-size: 2rem;
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
+    font-size: 24px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
 }
 
 .logo h1 {
-    font-size: 1.8rem;
-    background: linear-gradient(135deg, #fff, var(--accent));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--secondary);
 }
 
 .logo p {
-    font-size: 0.8rem;
-    opacity: 0.9;
+    font-size: 0.65rem;
+    color: var(--gray);
 }
 
 .nav {
     display: flex;
-    gap: 2rem;
+    gap: 1.8rem;
 }
 
 .nav a {
-    color: white;
+    color: var(--dark);
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s;
     position: relative;
+    padding: 5px 0;
 }
 
 .nav a:hover, .nav a.active {
-    color: var(--accent);
+    color: var(--primary);
 }
 
 .nav a::after {
     content: '';
     position: absolute;
-    bottom: -5px;
+    bottom: 0;
     left: 0;
     width: 0;
     height: 2px;
-    background: var(--accent);
+    background: var(--primary);
     transition: width 0.3s;
 }
 
@@ -111,65 +124,88 @@ body {
 }
 
 .cart-icon {
-    background: var(--primary);
-    padding: 10px 20px;
-    border-radius: 50px;
+    background: var(--gray-light);
+    padding: 8px 18px;
+    border-radius: 30px;
     cursor: pointer;
     transition: all 0.3s;
-    font-weight: bold;
+    font-weight: 600;
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .cart-icon:hover {
-    background: var(--primary-dark);
-    transform: scale(1.05);
+    background: var(--primary);
+    color: white;
 }
 
 #cart-count {
-    background: white;
-    color: var(--primary);
+    background: var(--primary);
+    color: white;
     border-radius: 50%;
     padding: 2px 8px;
-    margin-left: 8px;
+    font-size: 12px;
 }
 
-/* ГЛАВНЫЙ БАННЕР */
+/* ========== ГЛАВНЫЙ БАННЕР ========== */
 .hero {
-    background: linear-gradient(135deg, var(--secondary), var(--dark)), url('https://images.unsplash.com/photo-1489824904134-891ab64532f1?w=1600');
-    background-size: cover;
-    background-blend-mode: overlay;
-    min-height: 500px;
+    background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+    min-height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: white;
     margin-top: 70px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url('https://images.unsplash.com/photo-1489824904134-891ab64532f1?w=1600');
+    background-size: cover;
+    opacity: 0.08;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    padding: 60px 20px;
 }
 
 .hero-content h1 {
-    font-size: 3rem;
+    font-size: 2.5rem;
     margin-bottom: 1rem;
-    animation: fadeInUp 0.8s;
+    animation: fadeInUp 0.6s;
 }
 
 .hero-content p {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin-bottom: 2rem;
-    animation: fadeInUp 0.8s 0.2s both;
+    opacity: 0.9;
+    animation: fadeInUp 0.6s 0.1s both;
 }
 
 .hero-slogan {
-    font-size: 1rem;
-    opacity: 0.9;
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-bottom: 1.5rem;
 }
 
 .btn-primary {
     background: var(--primary);
     color: white;
-    padding: 12px 30px;
+    padding: 12px 32px;
     border: none;
-    border-radius: 50px;
-    font-size: 1.1rem;
+    border-radius: 40px;
+    font-size: 1rem;
+    font-weight: 600;
     cursor: pointer;
     transition: all 0.3s;
     display: inline-block;
@@ -179,19 +215,19 @@ body {
 .btn-primary:hover {
     background: var(--primary-dark);
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 25px rgba(230,57,70,0.3);
 }
 
-/* ПРЕИМУЩЕСТВА */
+/* ========== ПРЕИМУЩЕСТВА ========== */
 .advantages {
-    padding: 60px 0;
+    padding: 80px 0;
     background: white;
 }
 
 .advantages h2 {
     text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 40px;
+    font-size: 2rem;
+    margin-bottom: 50px;
     color: var(--secondary);
 }
 
@@ -203,32 +239,52 @@ body {
 
 .advantage-card {
     text-align: center;
-    padding: 30px;
+    padding: 35px 25px;
     background: var(--light);
-    border-radius: 15px;
-    transition: transform 0.3s;
+    border-radius: 20px;
+    transition: all 0.3s;
+    border: 1px solid #eef2f6;
 }
 
 .advantage-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
 }
 
 .advantage-icon {
-    font-size: 3rem;
-    margin-bottom: 15px;
+    font-size: 2.8rem;
+    margin-bottom: 18px;
 }
 
-/* КАТАЛОГ */
+.advantage-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    color: var(--secondary);
+}
+
+.advantage-card p {
+    font-size: 0.85rem;
+    color: var(--gray);
+}
+
+/* ========== КАТАЛОГ ========== */
 .catalog-section {
-    padding: 60px 0;
-    background: var(--light);
+    padding: 80px 0 60px;
+    background: #f5f7fa;
 }
 
 .catalog-section h2 {
     text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 40px;
+    font-size: 2rem;
+    margin-bottom: 15px;
     color: var(--secondary);
+    padding-top: 20px;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--gray);
+    margin-bottom: 40px;
 }
 
 .catalog-filters {
@@ -236,22 +292,24 @@ body {
     justify-content: center;
     gap: 15px;
     flex-wrap: wrap;
-    margin-bottom: 40px;
+    margin: 30px 0 45px;
 }
 
 .filter-btn {
-    padding: 10px 25px;
-    border: 2px solid var(--secondary);
-    background: transparent;
-    border-radius: 50px;
+    padding: 10px 24px;
+    border: 1.5px solid #ddd;
+    background: white;
+    border-radius: 40px;
     cursor: pointer;
     transition: all 0.3s;
-    font-weight: bold;
+    font-weight: 600;
+    font-size: 14px;
 }
 
 .filter-btn:hover, .filter-btn.active {
     background: var(--secondary);
     color: white;
+    border-color: var(--secondary);
 }
 
 .catalog-grid {
@@ -260,63 +318,72 @@ body {
     gap: 30px;
 }
 
+/* ========== КАРТОЧКИ ТОВАРОВ ========== */
 .product-card {
     background: white;
-    border-radius: 15px;
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    box-shadow: var(--shadow);
     transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
 }
 
 .product-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    box-shadow: var(--shadow-hover);
 }
 
 .product-card img {
     width: 100%;
-    height: auto;
-    min-height: 180px;
-    max-height: 220px;
+    height: 200px;
     object-fit: contain;
-    background: #ffffff;
-    border-radius: 10px 10px 0 0;
+    background: linear-gradient(135deg, #f5f7fa, #e9ecef);
+    padding: 20px;
+    transition: all 0.3s;
 }
 
 .product-info {
-    padding: 20px;
+    padding: 18px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .product-card h3 {
-    font-size: 1.1rem;
+    font-size: 1rem;
     margin-bottom: 10px;
     color: var(--secondary);
+    line-height: 1.4;
     min-height: 50px;
 }
 
 .product-price {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     color: var(--primary);
     font-weight: bold;
-    margin: 10px 0;
+    margin: 12px 0;
 }
 
 .product-card button {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     background: var(--secondary);
     color: white;
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
     cursor: pointer;
     transition: all 0.3s;
+    font-weight: 600;
+    font-size: 14px;
+    margin-top: auto;
 }
 
 .product-card button:hover {
     background: var(--primary);
 }
 
-/* КОРЗИНА */
+/* ========== КОРЗИНА ========== */
 .cart-overlay {
     position: fixed;
     top: 0;
@@ -336,7 +403,7 @@ body {
     height: 100%;
     background: white;
     z-index: 1002;
-    box-shadow: -5px 0 20px rgba(0,0,0,0.2);
+    box-shadow: -5px 0 30px rgba(0,0,0,0.2);
     transition: right 0.3s;
     display: flex;
     flex-direction: column;
@@ -347,12 +414,16 @@ body {
 }
 
 .cart-header {
-    padding: 20px;
+    padding: 20px 25px;
     background: var(--secondary);
     color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.cart-header h2 {
+    font-size: 1.3rem;
 }
 
 .close-cart {
@@ -361,6 +432,7 @@ body {
     color: white;
     font-size: 2rem;
     cursor: pointer;
+    line-height: 1;
 }
 
 .cart-items {
@@ -373,56 +445,74 @@ body {
     display: flex;
     justify-content: space-between;
     margin-bottom: 15px;
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
+    padding: 15px;
+    background: var(--light);
+    border-radius: 12px;
 }
 
 .cart-footer {
-    padding: 20px;
-    border-top: 2px solid #ddd;
+    padding: 20px 25px;
+    border-top: 1px solid #ddd;
+    background: white;
 }
 
 .total {
     font-size: 1.3rem;
     font-weight: bold;
-    margin-bottom: 15px;
+    margin-bottom: 18px;
+    text-align: right;
 }
 
 .btn-secondary {
     background: var(--gray);
     color: white;
-    padding: 10px 20px;
+    padding: 12px;
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
     cursor: pointer;
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    font-weight: 600;
+    font-size: 14px;
 }
 
-/* КОНТАКТЫ */
+.btn-secondary:hover {
+    background: #5a6268;
+}
+
+/* ========== КОНТАКТЫ ========== */
 .contacts-section {
-    padding: 60px 0;
+    padding: 80px 0;
     background: white;
 }
 
 .contacts-section h2 {
     text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 40px;
+    font-size: 2rem;
+    margin-bottom: 50px;
     color: var(--secondary);
 }
 
 .contacts-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 40px;
+    gap: 50px;
 }
 
 .contact-item {
     display: flex;
-    gap: 15px;
-    margin-bottom: 25px;
+    gap: 18px;
+    margin-bottom: 30px;
     align-items: flex-start;
+    padding: 20px;
+    background: var(--light);
+    border-radius: 20px;
+    transition: all 0.3s;
+}
+
+.contact-item:hover {
+    transform: translateX(8px);
+    box-shadow: var(--shadow);
 }
 
 .contact-icon {
@@ -431,37 +521,40 @@ body {
 
 .contact-item h3 {
     color: var(--secondary);
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+}
+
+.contact-item p {
+    color: var(--gray);
+    font-size: 0.9rem;
+    line-height: 1.4;
 }
 
 .map-container {
-    height: 400px;
-    border-radius: 15px;
+    height: 380px;
+    border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    box-shadow: var(--shadow);
 }
 
-#map {
-    width: 100%;
-    height: 100%;
-}
-
-/* ПОДВАЛ */
+/* ========== ПОДВАЛ ========== */
 .footer {
     background: var(--secondary);
     color: white;
-    padding: 40px 0 20px;
+    padding: 60px 0 25px;
 }
 
 .footer-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    margin-bottom: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
 }
 
 .footer-col h3 {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
 }
 
 .footer-col ul {
@@ -469,13 +562,13 @@ body {
 }
 
 .footer-col ul li {
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 .footer-col a {
     color: white;
     text-decoration: none;
-    opacity: 0.8;
+    opacity: 0.7;
     transition: opacity 0.3s;
 }
 
@@ -489,13 +582,15 @@ body {
 }
 
 .social-links a {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
 }
 
 .copyright {
     text-align: center;
-    padding-top: 20px;
+    padding-top: 25px;
     border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 0.8rem;
+    opacity: 0.7;
 }
 
 @keyframes fadeInUp {
@@ -509,22 +604,318 @@ body {
     }
 }
 
-@media (max-width: 768px) {
-    .header-container {
-        flex-direction: column;
-        gap: 15px;
+/* ========== АДАПТИВ ========== */
+@media (max-width: 992px) {
+    .catalog-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
     }
     
     .hero-content h1 {
         font-size: 2rem;
     }
     
+    .hero-content {
+        padding: 50px 20px;
+    }
+    
+    .advantages {
+        padding: 60px 0;
+    }
+    
+    .contacts-grid {
+        gap: 35px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        height: auto;
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 12px 20px;
+    }
+    
+    .logo {
+        flex: 1;
+    }
+    
+    .logo h1 {
+        font-size: 1.2rem;
+    }
+    
+    .logo p {
+        font-size: 0.6rem;
+    }
+    
+    .logo-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 20px;
+    }
+    
+    .nav {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        padding-top: 12px;
+        border-top: 1px solid #eef2f6;
+    }
+    
+    .nav a {
+        font-size: 13px;
+    }
+    
+    .hero {
+        margin-top: 110px;
+        min-height: 350px;
+    }
+    
+    .hero-content {
+        padding: 40px 20px;
+    }
+    
+    .hero-content h1 {
+        font-size: 1.6rem;
+    }
+    
+    .hero-content p {
+        font-size: 0.9rem;
+    }
+    
+    .advantages h2, .catalog-section h2, .contacts-section h2 {
+        font-size: 1.6rem;
+        margin-bottom: 30px;
+    }
+    
+    .advantages {
+        padding: 50px 0;
+    }
+    
+    .advantages-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    
+    .advantage-card {
+        padding: 20px 15px;
+    }
+    
+    .advantage-icon {
+        font-size: 2rem;
+    }
+    
+    .advantage-card h3 {
+        font-size: 0.9rem;
+    }
+    
+    .catalog-section {
+        padding: 50px 0 40px;
+    }
+    
+    .catalog-section h2 {
+        padding-top: 0;
+    }
+    
+    .catalog-filters {
+        gap: 10px;
+        margin: 20px 0 35px;
+    }
+    
+    .filter-btn {
+        padding: 6px 16px;
+        font-size: 12px;
+    }
+    
+    .catalog-grid {
+        gap: 20px;
+    }
+    
+    .product-card img {
+        height: 170px;
+        padding: 15px;
+    }
+    
+    .product-info {
+        padding: 14px;
+    }
+    
+    .product-card h3 {
+        font-size: 0.9rem;
+        min-height: auto;
+    }
+    
+    .product-price {
+        font-size: 1.2rem;
+    }
+    
+    .contacts-section {
+        padding: 50px 0;
+    }
+    
     .contacts-grid {
         grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .contact-item {
+        padding: 15px;
+    }
+    
+    .map-container {
+        height: 280px;
+    }
+    
+    .cart-sidebar {
+        width: 340px;
+        right: -340px;
+    }
+    
+    .footer {
+        padding: 40px 0 20px;
+    }
+    
+    .footer-grid {
+        gap: 30px;
+    }
+    
+    html {
+        scroll-padding-top: 120px;
+    }
+    
+    section[id] {
+        scroll-margin-top: 120px;
+    }
+}
+
+@media (max-width: 576px) {
+    .advantages-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .catalog-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .hero-content h1 {
+        font-size: 1.4rem;
+    }
+    
+    .hero-content p {
+        font-size: 0.85rem;
+    }
+    
+    .hero-slogan {
+        font-size: 0.8rem;
+    }
+    
+    .btn-primary {
+        padding: 10px 24px;
+        font-size: 0.9rem;
+    }
+    
+    .nav {
+        gap: 12px;
+    }
+    
+    .nav a {
+        font-size: 11px;
+    }
+    
+    .cart-icon {
+        padding: 5px 12px;
+        font-size: 12px;
+    }
+    
+    .logo h1 {
+        font-size: 1rem;
+    }
+    
+    .logo-icon {
+        width: 30px;
+        height: 30px;
+        font-size: 16px;
+    }
+    
+    .catalog-filters {
+        gap: 8px;
+    }
+    
+    .filter-btn {
+        padding: 5px 12px;
+        font-size: 11px;
+    }
+    
+    .product-card img {
+        height: 200px;
+        padding: 20px;
+    }
+    
+    .product-card h3 {
+        font-size: 0.95rem;
+    }
+    
+    .product-price {
+        font-size: 1.2rem;
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .social-links {
+        justify-content: center;
     }
     
     .cart-sidebar {
         width: 100%;
         right: -100%;
+    }
+    
+    html {
+        scroll-padding-top: 150px;
+    }
+    
+    section[id] {
+        scroll-margin-top: 150px;
+    }
+}
+
+@media (max-width: 380px) {
+    .header-container {
+        flex-direction: column;
+    }
+    
+    .nav {
+        order: 2;
+    }
+    
+    .cart-icon {
+        order: 3;
+    }
+    
+    .hero {
+        margin-top: 160px;
+    }
+    
+    .product-card img {
+        height: 180px;
+        padding: 15px;
+    }
+}
+
+/* ========== ДОПОЛНИТЕЛЬНЫЕ ФИКСЫ ДЛЯ ПК ========== */
+@media (min-width: 1200px) {
+    .catalog-grid {
+        gap: 35px;
+    }
+    
+    .advantages-grid {
+        gap: 35px;
     }
 }
