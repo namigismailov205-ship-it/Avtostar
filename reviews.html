@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Avtostar - Главная</title>
+    <title>Avtostar - Отзывы</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -17,9 +17,9 @@
             </div>
         </div>
         <nav class="nav">
-            <a href="index.html" class="active">Главная</a>
+            <a href="index.html">Главная</a>
             <a href="catalog.html">Каталог</a>
-            <a href="reviews.html">Отзывы</a>
+            <a href="reviews.html" class="active">Отзывы</a>
             <a href="contacts.html">Контакты</a>
         </nav>
         <div class="cart-icon" id="cart-icon-btn">
@@ -29,39 +29,51 @@
     </div>
 </div>
 
-<section class="hero">
+<section class="hero" style="min-height: 300px;">
     <div class="hero-content">
-        <h1>Добро пожаловать в Avtostar!</h1>
-        <p>Качественные автотовары по доступным ценам в Нижневартовске</p>
-        <p class="hero-slogan">Дворники, компрессоры, автохимия, аксессуары и многое другое</p>
-        <button class="btn-primary" onclick="location.href='catalog.html'">Перейти в каталог</button>
+        <h1>Отзывы наших клиентов</h1>
+        <p>Мы ценим ваше мнение!</p>
     </div>
 </section>
 
-<section class="advantages">
+<section class="catalog-section">
     <div class="container">
-        <h2>Почему выбирают Avtostar?</h2>
-        <div class="advantages-grid">
+        <div class="advantages-grid" style="margin-bottom: 50px;">
             <div class="advantage-card">
-                <div class="advantage-icon">🚚</div>
-                <h3>Быстрая доставка</h3>
-                <p>Доставка по Нижневартовску за 1-2 дня</p>
+                <div style="font-size: 3rem; color: var(--primary); font-weight: bold;">4.9</div>
+                <div style="font-size: 1.5rem; color: gold;">★★★★★</div>
+                <p>Средняя оценка</p>
             </div>
             <div class="advantage-card">
-                <div class="advantage-icon">💎</div>
-                <h3>Оригинальное качество</h3>
-                <p>Только проверенные бренды</p>
+                <div style="font-size: 3rem; color: var(--primary); font-weight: bold;">500+</div>
+                <p>Довольных клиентов</p>
             </div>
             <div class="advantage-card">
-                <div class="advantage-icon">🔧</div>
-                <h3>Широкий ассортимент</h3>
-                <p>Более 1000 товаров в наличии</p>
+                <div style="font-size: 3rem; color: var(--primary); font-weight: bold;">98%</div>
+                <p>Рекомендуют нас</p>
             </div>
-            <div class="advantage-card">
-                <div class="advantage-icon">⭐</div>
-                <h3>Отзывы клиентов</h3>
-                <p>4.9 ★ на основе 500+ отзывов</p>
-            </div>
+        </div>
+
+        <div style="background: white; padding: 30px; border-radius: 15px; margin-bottom: 40px;">
+            <h3 style="margin-bottom: 20px;">Оставить отзыв</h3>
+            <form id="review-form">
+                <input type="text" id="review-name" placeholder="Ваше имя" required style="width:100%; padding:12px; margin-bottom:15px; border:2px solid #ddd; border-radius:10px;">
+                <select id="review-rating" required style="width:100%; padding:12px; margin-bottom:15px; border:2px solid #ddd; border-radius:10px;">
+                    <option value="">Оценка</option>
+                    <option value="5">★★★★★ (5)</option>
+                    <option value="4">★★★★☆ (4)</option>
+                    <option value="3">★★★☆☆ (3)</option>
+                    <option value="2">★★☆☆☆ (2)</option>
+                    <option value="1">★☆☆☆☆ (1)</option>
+                </select>
+                <textarea id="review-text" rows="4" placeholder="Ваш отзыв..." required style="width:100%; padding:12px; margin-bottom:15px; border:2px solid #ddd; border-radius:10px;"></textarea>
+                <button type="submit" class="btn-primary">Отправить отзыв</button>
+            </form>
+        </div>
+
+        <div>
+            <h3>Последние отзывы</h3>
+            <div id="reviews-container"></div>
         </div>
     </div>
 </section>
