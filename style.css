@@ -336,51 +336,80 @@ section[id] {
 
 .product-card img {
     width: 100%;
-    height: 200px;
+    height: auto;
+    aspect-ratio: 1 / 1;
     object-fit: contain;
-    background: linear-gradient(135deg, #f5f7fa, #e9ecef);
-    padding: 20px;
+    background: linear-gradient(135deg, #ffffff, #ffffff);
+    padding: 15px;
     transition: all 0.3s;
 }
 
 .product-info {
-    padding: 18px;
+    padding: 15px;
     flex: 1;
     display: flex;
     flex-direction: column;
 }
 
 .product-card h3 {
-    font-size: 1rem;
-    margin-bottom: 10px;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
     color: var(--secondary);
-    line-height: 1.4;
-    min-height: 50px;
+    line-height: 1.3;
+    min-height: 40px;
 }
 
 .product-price {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     color: var(--primary);
     font-weight: bold;
-    margin: 12px 0;
+    margin: 8px 0;
 }
 
 .product-card button {
     width: 100%;
-    padding: 12px;
+    padding: 10px;
     background: var(--secondary);
     color: white;
     border: none;
-    border-radius: 12px;
+    border-radius: 10px;
     cursor: pointer;
     transition: all 0.3s;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 13px;
     margin-top: auto;
 }
 
 .product-card button:hover {
     background: var(--primary);
+}
+
+/* Адаптив для планшетов */
+@media (max-width: 768px) {
+    .product-card img {
+        padding: 12px;
+    }
+    
+    .product-card h3 {
+        font-size: 0.85rem;
+        min-height: 35px;
+    }
+    
+    .product-price {
+        font-size: 1.1rem;
+    }
+}
+
+/* Адаптив для телефонов */
+@media (max-width: 576px) {
+    .product-card img {
+        padding: 20px;
+    }
+    
+    .product-card h3 {
+        font-size: 0.9rem;
+        min-height: auto;
+    }
 }
 
 /* ========== КОРЗИНА ========== */

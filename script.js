@@ -16,11 +16,35 @@ const products = [
     { id: 14, name: "Автомобильный компрессор Goodyear GY-40L", price: 3990, category: "компрессоры", image: "Компрессор GOODYEAR.jpg" },
     { id: 15, name: "Полироль для кузова AVS", price: 420, category: "автохимия", image: "Полироль для кузова.jpg" },
     { id: 16, name: "Освежитель воздуха", price: 690, category: "пахучки", image: "Освежитель воздуха.jpg" },
-    { id: 17, name: "Очиститель стекол Grass", price: 350, category: "автохимия", image: "Очиститель стекол.jpg" }
+    { id: 17, name: "Очиститель стекол Grass", price: 350, category: "автохимия", image: "Очиститель стекол.jpg" },
+    { id: 18, name: "Антифриз G11 Sibiria 1л", price: 350, category: "автохимия", image: "антифриз g11.jpg" },
+    { id: 19, name: "Антифриз G12 Sibiria 1л", price: 380, category: "автохимия", image: "антифриз g12.jpg" },
+    { id: 20, name: "Антифриз G12+ Sibiria 1л", price: 420, category: "автохимия", image: "антифриз g12+.jpg" },
+    { id: 21, name: "Тосол классический 1л", price: 280, category: "автохимия", image: "тосол.jpg" },
+    { id: 22, name: "Чернитель шин 3ton", price: 390, category: "автохимия", image: "чернитель.jpg" },
+    { id: 23, name: "Растворитель ржавчины 3ton", price: 450, category: "автохимия", image: "растворитель.jpg" },
+    { id: 24, name: "Быстрый старт 3ton", price: 520, category: "автохимия", image: "быстрый_старт.jpg" },
+    { id: 25, name: "Проникающая смазка 3ton", price: 380, category: "автохимия", image: "смазка.jpg" },
+    { id: 26, name: "Полироль фар 3ton", price: 490, category: "автохимия", image: "полироль_фар.jpg" },
+    { id: 27, name: "Очиститель инжектора 3ton", price: 560, category: "автохимия", image: "очиститель_инжектора.jpg" },
+    { id: 28, name: "Держатель для телефона в авто", price: 350, category: "аксессуары", image: "держатель.jpg" },
+    { id: 29, name: "Микрофибра для авто 30x30 см", price: 120, category: "аксессуары", image: "микрофибра.jpg" },
+    { id: 30, name: "Автомобильная губка", price: 90, category: "аксессуары", image: "губка.jpg" }
 ];
 
-// Корзина
-let cart = JSON.parse(localStorage.getItem('avtostar_cart')) || [];
+// ========== ИНИЦИАЛИЗАЦИЯ КОРЗИНЫ (ВАЖНО!) ==========
+let cart = [];
+
+function loadCartFromStorage() {
+    const savedCart = localStorage.getItem('avtostar_cart');
+    if (savedCart) {
+        cart = JSON.parse(savedCart);
+    } else {
+        cart = [];
+    }
+    updateCartUI();
+    updateCartCount();
+}
 
 function saveCart() {
     localStorage.setItem('avtostar_cart', JSON.stringify(cart));
@@ -28,6 +52,7 @@ function saveCart() {
     updateCartCount();
 }
 
+// ========== ОСТАЛЬНЫЕ ФУНКЦИИ ==========
 function addToCart(productId) {
     const product = products.find(p => p.id === productId);
     const existing = cart.find(item => item.id === productId);
@@ -67,7 +92,7 @@ function updateCartUI() {
     
     if (cart.length === 0) {
         cartContainer.innerHTML = "<p style='text-align:center;'>Корзина пуста</p>";
-        totalSpan.innerText = "0";
+        if (totalSpan) totalSpan.innerText = "0";
         return;
     }
     
@@ -92,7 +117,7 @@ function updateCartUI() {
     });
     
     cartContainer.innerHTML = html;
-    totalSpan.innerText = total;
+    if (totalSpan) totalSpan.innerText = total;
 }
 
 function updateCartCount() {
@@ -139,7 +164,6 @@ function showNotification(message) {
     setTimeout(() => notification.remove(), 3000);
 }
 
-// ========== ИСПРАВЛЕННАЯ ФУНКЦИЯ CHECKOUT ==========
 function checkout() {
     if (cart.length === 0) {
         alert("Корзина пуста!");
@@ -169,7 +193,6 @@ function checkout() {
         alert("Ошибка соединения с сервером. Убедитесь, что Apache запущен.");
     });
 }
-// ==================================================
 
 function loadReviews() {
     const container = document.getElementById('reviews-container');
@@ -278,8 +301,11 @@ if (catParam && ['дворники', 'компрессоры', 'аксессуа
     currentFilter = catParam;
 }
 
-// ИНИЦИАЛИЗАЦИЯ
+// ========== ИНИЦИАЛИЗАЦИЯ СТРАНИЦЫ ==========
 document.addEventListener('DOMContentLoaded', () => {
+    // ЗАГРУЖАЕМ КОРЗИНУ ИЗ STORAGE ПРИ ЗАГРУЗКЕ ЛЮБОЙ СТРАНИЦЫ
+    loadCartFromStorage();
+    
     renderCatalog(currentFilter);
     setupFilters();
     loadReviews();
@@ -298,7 +324,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (overlay) overlay.addEventListener('click', closeCart);
     if (reviewForm) reviewForm.addEventListener('submit', submitReview);
     
-    // Активируем фильтр из URL
     if (catParam) {
         const filterBtn = Array.from(document.querySelectorAll('.filter-btn')).find(btn => btn.dataset.filter === catParam);
         if (filterBtn) filterBtn.click();
