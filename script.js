@@ -9,10 +9,10 @@ const products = [
     { id: 7, name: "Щетка стеклоочистителя всесезонные Avantech 650 мм (штука)", price: 1190, category: "дворники", image: "Щетка стеклоочистителя.jpg" },
     { id: 8, name: "Щетка стеклоочистителя всесезонные Avantech 700 мм (штука)", price: 1290, category: "дворники", image: "Щетка стеклоочистителя.jpg" },
     { id: 9, name: "Автомобильный компрессор AVS 580 12V", price: 2950, category: "компрессоры", image: "Компрессор AVS.jpg" },
-    { id: 10, name: "Ароматизатор «Морской бриз»", price: 490, category: "пахучки", image: "Ароматизатор морской бриз.jpg" },
+    { id: 10, name: "Ароматизатор «Морской бриз»", price: 290, category: "пахучки", image: "Ароматизатор морской бриз.jpg" },
     { id: 11, name: "Жидкость для омывателя -30°C", price: 260, category: "автохимия", image: "Жидкость омыв.jpg" },
     { id: 12, name: "Чехлы на сиденья универсальные", price: 6290, category: "аксессуары", image: "Чехлы.jpg" },
-    { id: 13, name: "Ароматизатор AREON x version", price: 130, category: "аксессуары", image: "Ароматизатор.jpg" },
+    { id: 13, name: "Ароматизатор AREON x version", price: 130, category: "пахучки", image: "Ароматизатор.jpg" },
     { id: 14, name: "Автомобильный компрессор Goodyear GY-40L", price: 3990, category: "компрессоры", image: "Компрессор GOODYEAR.jpg" },
     { id: 15, name: "Полироль для кузова AVS", price: 420, category: "автохимия", image: "Полироль для кузова.jpg" },
     { id: 16, name: "Освежитель воздуха", price: 690, category: "пахучки", image: "Освежитель воздуха.jpg" },
@@ -27,9 +27,9 @@ const products = [
     { id: 25, name: "Проникающая смазка 3ton", price: 380, category: "автохимия", image: "смазка.jpg" },
     { id: 26, name: "Полироль фар 3ton", price: 490, category: "автохимия", image: "полироль_фар.jpg" },
     { id: 27, name: "Очиститель инжектора 3ton", price: 560, category: "автохимия", image: "очиститель_инжектора.jpg" },
-    { id: 28, name: "Держатель для телефона в авто", price: 350, category: "аксессуары", image: "держатель.jpg" },
-    { id: 29, name: "Микрофибра для авто 30x30 см", price: 120, category: "аксессуары", image: "микрофибра.jpg" },
-    { id: 30, name: "Автомобильная губка", price: 90, category: "аксессуары", image: "губка.jpg" }
+    { id: 28, name: "Держатель для телефона в авто", price: 1200, category: "аксессуары", image: "держатель.jpg" },
+    { id: 29, name: "Микрофибра для авто 30x40 см", price: 200, category: "аксессуары", image: "микрофибра.jpg" },
+    { id: 30, name: "Автомобильная губка", price: 180, category: "аксессуары", image: "губка.jpg" }
 ];
 
 // ========== ИНИЦИАЛИЗАЦИЯ КОРЗИНЫ (ВАЖНО!) ==========
